@@ -57,14 +57,11 @@ class Human(Player):
         super().__init__(name)
 
     def select_coords(self) -> tuple[int, int]:
-        try:
+        while True:
             x, y = map(int, input(f"{self.name}, enter coords: ").split())
-            if not (0 <= x <= 9 and 0 <= y <= 9):
-                raise ValueError("Coordinates out of bounds.")
-            return x, y
-        except ValueError as e:
-            print(f"Error: {e}")
-            return self.select_coords()
+            if 0 <= x <= 9 and 0 <= y <= 9:
+                return x, y
+            print("Coordinates out of bounds.")
 
     def set_ships(self):
         self.field.place_ships()
