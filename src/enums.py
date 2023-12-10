@@ -1,8 +1,8 @@
 import enum
 
 class ShootResult(enum.Enum):
-
-    miss = 1
+    miss = 8
     injure = 2
-    kill = 3
+    kill = 4
+    ally_ship_dead = 7
 

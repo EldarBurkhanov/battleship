@@ -27,11 +27,11 @@ class Game:
             x, y = self.current_player.select_coords()
             answer = self.enemy_player.check_cell(x, y)
             if answer == ShootResult.miss:
-                self.current_player.draft_field.grid[x][y] = 8
+                self.current_player.draft_field.grid[x][y] = ShootResult.miss.value
                 self.change_player()
             elif answer == ShootResult.kill:
-                self.current_player.draft_field.grid[x][y] = 7
-                self.enemy_player.field.grid[x][y] = 4
+                self.current_player.draft_field.grid[x][y] = ShootResult.ally_ship_dead.value
+                self.enemy_player.field.grid[x][y] = ShootResult.kill.value
                 if not self.enemy_player.has_ships():
                     self.winner = self.current_player
                     print(f"{self.current_player} won!")
